@@ -9,58 +9,31 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title:Text('BMI CALCULATOR'),
       ),
       body: Column(
         children:<Widget>[
           Expanded(child:Row(
             children: <Widget> [
-            Expanded(child:Container(
-              margin:EdgeInsets.all(15.0),
-              decoration:BoxDecoration(
-                color:const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0)
-              ),
+            Expanded(
+              child: RepeatContainerCodemin(
+                colors:Color(0xFF0A0E21),),
 
-            ),),
-            Expanded(child:Container(
-              margin:EdgeInsets.all(15.0),
-              decoration:BoxDecoration(
-                  color:const Color(0xFF1D1E33),
-                  borderRadius: BorderRadius.circular(10.0)
-              ),
-
-            ),),
+            ),
+            Expanded(child: RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+            ),
 
 
     ],
       ),),
-          Expanded(child:Container(
-            margin:EdgeInsets.all(15.0),
-            decoration:BoxDecoration(
-                color:const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0)
-            ),
-
-          ),),
+          Expanded(child:RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+          ),
           Expanded(child:Row(
           children: <Widget> [
-          Expanded(child:Container(
-            margin:EdgeInsets.all(15.0),
-            decoration:BoxDecoration(
-                color:const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0)
-            ),
-
-          ),),
-          Expanded(child:Container(
-            margin:EdgeInsets.all(15.0),
-            decoration:BoxDecoration(
-                color:const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0)
-            ),
-
-          ),),
+          Expanded(child:  RepeatContainerCodemin(colors:Color(0xFF0A0E21),)
+            ,),
+          Expanded(child: RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+          ),
 
 
         ],
@@ -74,5 +47,22 @@ class _InputPageState extends State<InputPage> {
         child: Icon(Icons.add),
 
         );
+  }
+}
+
+class RepeatContainerCodemin extends StatelessWidget {
+  RepeatContainerCodemin({@required this.colors});
+  final Color colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin:EdgeInsets.all(15.0),
+      decoration:BoxDecoration(
+        color: colors,
+        borderRadius: BorderRadius.circular(10.0)
+      ),
+
+    );
   }
 }
