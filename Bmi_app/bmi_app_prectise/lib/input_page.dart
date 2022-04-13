@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -16,23 +18,36 @@ class _InputPageState extends State<InputPage> {
           Expanded(child:Row(
             children: <Widget> [
             Expanded(
-              child: RepeatContainerCodemin(
-                colors:Color(0xFF0A0E21),),
+              child: RepeatContainerCodemi(
+                colors:Color(0xFF0A0E21),
+                CardWidget:RepeatTextandIconWidget(
+                  iconData:FontAwesomeIcons.male,
+                  label: 'Male',
+                ),
+              ),
 
             ),
-            Expanded(child: RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+            Expanded(child: RepeatContainerCodemi(
+              colors:Color(0xFF0A0E21),
+              CardWidget:RepeatTextandIconWidget(
+                iconData:FontAwesomeIcons.female,
+                label:'Female',
+
+              ),
+
+            ),
             ),
 
 
     ],
       ),),
-          Expanded(child:RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+          Expanded(child:RepeatContainerCodemi(colors:Color(0xFF0A0E21),),
           ),
           Expanded(child:Row(
           children: <Widget> [
-          Expanded(child:  RepeatContainerCodemin(colors:Color(0xFF0A0E21),)
+          Expanded(child:  RepeatContainerCodemi(colors:Color(0xFF0A0E21),)
             ,),
-          Expanded(child: RepeatContainerCodemin(colors:Color(0xFF0A0E21),),
+          Expanded(child: RepeatContainerCodemi(colors:Color(0xFF0A0E21),),
           ),
 
 
@@ -50,16 +65,47 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RepeatContainerCodemin extends StatelessWidget {
-  RepeatContainerCodemin({@required this.colors});
-  final Color colors;
+class RepeatTextandIconWidget extends StatelessWidget {
+  RepeatTextandIconWidget({@required this.iconData,this.label})
+     final IconData iconData;
+     final String label;
 
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment:MainAxisAlignment.center,
+               children:<Widget>[
+     Icon(
+       iconData,
+       size: 85.0,
+     ),
+     SizedBox(
+       height: 15.0,
+     ),
+     Text(label,
+       style: TextStyle(
+       fontSize: 30.0,
+       color:Color(0xFF8D8E98),
+       //colors:Color(0xFF8D8E98),
+     ),),
+               ],
+
+              );
+  }
+}
+
+class RepeatContainerCodemi extends StatelessWidget {
+       RepeatContainerCodemi ({@required this.colors, @required this.CardWidget});
+  final Color colors;
+  final Widget CardWidget;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin:EdgeInsets.all(15.0),
+      child:CardWidget,
       decoration:BoxDecoration(
-        color: colors,
+          color: colors,
         borderRadius: BorderRadius.circular(10.0)
       ),
 
