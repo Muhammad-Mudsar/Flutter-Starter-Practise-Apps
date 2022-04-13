@@ -9,28 +9,30 @@ enum Gender{
   male,
   female,
 }
-
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+ Gender selectGender;
+     //Gender.male;
 
-  Color malecolor = deactivecolor;
-  Color femalecolor = deactivecolor;
 
-
-void updateColor(Gender gendertype) {
-    if (gendertype == Gender.male) {
-      Color malecolor = activecolor;
-      Color femalecolor = deactivecolor;
-    }
-    if (gendertype == Gender.female) {
-      Color malecolor = deactivecolor;
-      Color femalecolor = activecolor;
-    }
-  }
+//   Color malecolor = deactivecolor;
+//   Color femalecolor = deactivecolor;
+//
+//
+// void updateColor(Gender gendertype) {
+//     if (gendertype == Gender.male) {
+//       Color malecolor = activecolor;
+//       Color femalecolor = deactivecolor;
+//     }
+//     if (gendertype == Gender.female) {
+//       Color malecolor = deactivecolor;
+//       Color femalecolor = activecolor;
+//     }
+//   }
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -45,12 +47,13 @@ void updateColor(Gender gendertype) {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        updateColor(Gender.male);
+                        selectGender=Gender.male;
+                       // updateColor(Gender.male);
                       });
                     },
                     child: RepeatContainerCodemi(
                       //alt+enter
-                      colors: malecolor,
+                      colors: selectGender==Gender.male?activecolor:deactivecolor,
                       CardWidget: RepeatTextandIconWidget(
                         iconData: FontAwesomeIcons.male,
                         label: 'Male',
@@ -62,11 +65,12 @@ void updateColor(Gender gendertype) {
                 Expanded(child: GestureDetector(
                   onTap: (){
                     setState(() {
-                      updateColor(Gender.female);
+                      selectGender=Gender.female;
+                      //updateColor(Gender.female);
                     });
                   },
                   child: RepeatContainerCodemi(
-                    colors: femalecolor,
+                    colors: selectGender==Gender.female?activecolor:deactivecolor,
                     CardWidget: RepeatTextandIconWidget(
                       iconData: FontAwesomeIcons.female,
                       label: 'Female',
@@ -106,6 +110,8 @@ void updateColor(Gender gendertype) {
       );
     }
   }
+
+
 
 
 
