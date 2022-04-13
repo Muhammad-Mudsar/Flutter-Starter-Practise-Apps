@@ -5,6 +5,10 @@ import 'containerfile.dart';
 
 const activecolor=Color(0xFF1D1E33);
 const deactivecolor=Color(0xFF111328);
+enum Gender{
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -16,12 +20,13 @@ class _InputPageState extends State<InputPage> {
   Color malecolor = deactivecolor;
   Color femalecolor = deactivecolor;
 
-  void updateColor(int gender) {
-    if (gender == 1) {
+
+void updateColor(Gender gendertype) {
+    if (gendertype == Gender.male) {
       Color malecolor = activecolor;
       Color femalecolor = deactivecolor;
     }
-    if (gender == 2) {
+    if (gendertype == Gender.female) {
       Color malecolor = deactivecolor;
       Color femalecolor = activecolor;
     }
@@ -40,7 +45,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        updateColor(1);
+                        updateColor(Gender.male);
                       });
                     },
                     child: RepeatContainerCodemi(
@@ -57,7 +62,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(child: GestureDetector(
                   onTap: (){
                     setState(() {
-                      updateColor(2);
+                      updateColor(Gender.female);
                     });
                   },
                   child: RepeatContainerCodemi(
@@ -97,10 +102,12 @@ class _InputPageState extends State<InputPage> {
       FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
-
+//enamuration constants ko text form main display karwany main help karti ha
       );
     }
   }
+
+
 
 
 
