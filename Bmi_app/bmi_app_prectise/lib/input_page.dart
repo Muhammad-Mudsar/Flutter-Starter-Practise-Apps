@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:bmi_app_prectise/constantfile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,6 +20,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 // Gender selectGender;//
  Gender selectGender= Gender.male;
+ int SliderHeight=180;
      //Gender.male;
 
 
@@ -42,6 +45,7 @@ class _InputPageState extends State<InputPage> {
           title: Text('BMI CALCULATOR'),
         ),
         body: Column(
+          crossAxisAlignment:CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(child: Row(
               children: <Widget>[
@@ -101,9 +105,37 @@ class _InputPageState extends State<InputPage> {
             Expanded(child: RepeatContainerCodemi(
               colors: Color(0xFF0A0E21),
             CardWidget:Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('HIGHT',style:klabelstyle,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(SliderHeight.toString(),
+                  style:k2label),
+                  Text('cm',style:klabelstyle),
+
+
+
+
+                ],
+              ),
+                Slider(
+                  value:SliderHeight.toDouble(),
+                  min: 120.0,
+                  max: 180.0,
+                  activeColor: Color(0xFFEB1555),
+                  inactiveColor:Color(0xFE8D8E98),
+                  onChanged:(double newvalue){
+                    setState(() {
+                      SliderHeight=newvalue.round();
+
+                    });
+                  },
+
+
+                ),
+
 
               ],
             ),

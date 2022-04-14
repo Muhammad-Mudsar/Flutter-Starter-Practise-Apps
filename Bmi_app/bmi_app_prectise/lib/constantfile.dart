@@ -6,3 +6,7 @@ fontSize: 30.0,
 color:Color(0xFF8D8E98),
 //colors:Color(0xFF8D8E98),
 );
+ const k2label=TextStyle(
+fontSize: 50.0,
+fontWeight:FontWeight.w900,
+);
