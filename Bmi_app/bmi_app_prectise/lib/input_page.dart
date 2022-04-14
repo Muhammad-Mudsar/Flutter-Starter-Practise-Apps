@@ -1,10 +1,11 @@
+import 'package:bmi_app_prectise/constantfile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'iconTextfile.dart';
+import 'constantfile.dart';
 import 'containerfile.dart';
 
-const activecolor=Color(0xFF1D1E33);
-const deactivecolor=Color(0xFF111328);
+
 enum Gender{
   male,
   female,
@@ -15,7 +16,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
- Gender selectGender;
+// Gender selectGender;//
+ Gender selectGender= Gender.male;
      //Gender.male;
 
 
@@ -44,14 +46,20 @@ class _InputPageState extends State<InputPage> {
             Expanded(child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        selectGender=Gender.male;
-                       // updateColor(Gender.male);
-                      });
-                    },
+                  // child: GestureDetector(
+                  //   onTap: (){
+                  //     setState(() {
+                  //       selectGender=Gender.male;
+                  //      // updateColor(Gender.male);
+                  //     });
+                  //   },
                     child: RepeatContainerCodemi(
+                      onPressed:(){
+
+                        setState(() {
+                          selectGender=Gender.male;
+                        });
+                      },
                       //alt+enter
                       colors: selectGender==Gender.male?activecolor:deactivecolor,
                       CardWidget: RepeatTextandIconWidget(
@@ -59,17 +67,23 @@ class _InputPageState extends State<InputPage> {
                         label: 'Male',
                       ),
                     ),
-                  ),
+                 // ),gesture dectoclose
 
                 ),
-                Expanded(child: GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      selectGender=Gender.female;
-                      //updateColor(Gender.female);
-                    });
-                  },
+                Expanded(
+                  // child: GestureDetector(
+                  // onTap: (){
+                  //   setState(() {
+                  //     selectGender=Gender.female;
+                  //     //updateColor(Gender.female);
+                  //   });
+                  // },
                   child: RepeatContainerCodemi(
+                    onPressed:(){
+                      setState(() {
+                        selectGender=Gender.female;
+                      });
+                    },
                     colors: selectGender==Gender.female?activecolor:deactivecolor,
                     CardWidget: RepeatTextandIconWidget(
                       iconData: FontAwesomeIcons.female,
@@ -78,17 +92,27 @@ class _InputPageState extends State<InputPage> {
                     ),
 
                   ),
-                ),
+               // ),gesture dector closed
                 ),
 
 
               ],
             ),),
-            Expanded(child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),),
+            Expanded(child: RepeatContainerCodemi(
+              colors: Color(0xFF0A0E21),
+            CardWidget:Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text('HIGHT',style:klabelstyle,),
+
+              ],
+            ),
+            ),
             ),
             Expanded(child: Row(
               children: <Widget>[
                 Expanded(
+
                   child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),)
                   ,),
                 Expanded(
@@ -110,10 +134,6 @@ class _InputPageState extends State<InputPage> {
       );
     }
   }
-
-
-
-
 
 
 

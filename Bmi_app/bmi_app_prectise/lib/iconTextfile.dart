@@ -1,4 +1,6 @@
+import 'package:bmi_app_prectise/constantfile.dart';
 import 'package:flutter/material.dart';
+import 'constantfile.dart';
 class RepeatTextandIconWidget extends StatelessWidget {
   RepeatTextandIconWidget({@required this.iconData,this.label})
   final IconData iconData;
@@ -18,11 +20,8 @@ class RepeatTextandIconWidget extends StatelessWidget {
           height: 15.0,
         ),
         Text(label,
-          style: TextStyle(
-            fontSize: 30.0,
-            color:Color(0xFF8D8E98),
-            //colors:Color(0xFF8D8E98),
-          ),),
+          style:klabelstyle,
+        ),
       ],
 
     );
