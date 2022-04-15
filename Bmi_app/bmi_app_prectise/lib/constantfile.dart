@@ -10,3 +10,7 @@ color:Color(0xFF8D8E98),
 fontSize: 50.0,
 fontWeight:FontWeight.w900,
 );
+ const k2largelabel=TextStyle(
+fontSize: 25.0,
+fontWeight:FontWeight.bold,
+);

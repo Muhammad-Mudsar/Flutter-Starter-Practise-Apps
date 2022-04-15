@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'iconTextfile.dart';
 import 'constantfile.dart';
+import 'resultfile.dart';
 import 'containerfile.dart';
 
 
@@ -220,14 +221,21 @@ class _InputPageState extends State<InputPage> {
                   ),
 
                 ),
-                Container(
-                  color: Color(0xFA0AFE21),
-                  margin:EdgeInsets.only(top:10.0),
-                  width:double.infinity,
-                  height: 80.0,
+                GestureDetector(
+                  onTap: (){
+                Navigator.push(context,MaterialPageRoute(builder:(context)=>Resultscreen()));
+                  },
+                  child: Container(
+                    child:Center(
+                        child: Text('Calculate',style: k2largelabel,)),
+                    color: Color(0xFA0AFE21),
+                    margin:EdgeInsets.only(top:10.0),
+                    width:double.infinity,
+                    height: 80.0,
 
 
 
+                  ),
                 ),
 
 
