@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:bmi_app_prectise/constantfile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'iconTextfile.dart';
@@ -21,6 +20,8 @@ class _InputPageState extends State<InputPage> {
 // Gender selectGender;//
  Gender selectGender= Gender.male;
  int SliderHeight=180;
+ int sliderWeigt=60;
+ int sliderage=20;
      //Gender.male;
 
 
@@ -144,11 +145,89 @@ class _InputPageState extends State<InputPage> {
             Expanded(child: Row(
               children: <Widget>[
                 Expanded(
+                  child: RepeatContainerCodemi(
+                    colors: Color(0xFF0A0E21),
+                  CardWidget:Column(
+                    mainAxisAlignment:MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Weight',style:klabelstyle,),
+                      Text(sliderWeigt.toString(),
+                        style:k2label,
+                      ),
+                      Row(
+                        children: [
+                        Roundbutton(
+                          icondata:FontAwesomeIcons.minus ,
+                          onPress:(){
+                           setState(() {
+                             sliderWeigt--;
+                           });
+                        },
 
-                  child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),)
+                        ),
+                        SizedBox(width: 10.0,),
+                        Roundbutton(
+                          icondata:FontAwesomeIcons.plus ,
+                          onPress:(){
+                            setState(() {
+                              sliderWeigt++;
+                            });
+                          },
+                        ),
+                        ],
+                      ),
+                    ],
+
+                  )
+
+                    ,)
                   ,),
                 Expanded(
-                  child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),),
+                  child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),
+                      CardWidget:Column(
+                        mainAxisAlignment:MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text('AGE',style:klabelstyle,),
+                          Text(sliderage.toString(),
+                            style:k2label,
+                          ),
+                          Row(
+                            children: [
+                              Roundbutton(
+                                icondata:FontAwesomeIcons.minus ,
+                                onPress:(){
+                                  setState(() {
+                                    sliderage--;
+                                  });
+                                },
+
+                              ),
+                              SizedBox(width: 10.0,),
+                              Roundbutton(
+                                icondata:FontAwesomeIcons.plus ,
+                                onPress:(){
+                                  setState(() {
+                                    sliderage++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+
+                      )
+//x
+                  ),
+
+                ),
+                Container(
+                  color: Color(0xFA0AFE21),
+                  margin:EdgeInsets.only(top:10.0),
+                  width:double.infinity,
+                  height: 80.0,
+
+
+
                 ),
 
 
@@ -167,6 +246,31 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
+  class Roundbutton extends StatelessWidget {
+  Roundbutton({@required this.icondata,@required this.onPress}),
+  final Icondata icondata;
+  final Function onPress;
+
+
+
+    @override
+    Widget build(BuildContext context) {
+      return RawMaterialButton(
+        child: Icon(icondata),
+        onPressed: onPress,
+        elevation: 6.0,
+        constraints: BoxConstraints.tightFor(
+          height: 56.0,
+          width: 56.0,
+        ),
+        shape: CircleBorder(),
+        fillColor:Color (0xFF4C4F5E),
+
+
+
+      );
+    }
+  }
 
 
 
