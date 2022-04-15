@@ -1,284 +1,254 @@
-import 'package:bmi_app_prectise/constantfile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'iconTextfile.dart';
-import 'constantfile.dart';
-import 'resultfile.dart';
-import 'containerfile.dart';
+import 'ContainerFile.dart';
+import 'IconTextFile.dart';
+import 'constantFile.dart';
+import 'ResultFile.dart';
+import 'package:bmi_calculator/calculatorFile.dart';
 
 
 enum Gender{
   male,
   female,
 }
+
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
-// Gender selectGender;//
- Gender selectGender= Gender.male;
- int SliderHeight=180;
- int sliderWeigt=60;
- int sliderage=20;
-     //Gender.male;
+  Gender selectGender;
+  int Sliderheight=180;
+  int SliderWeight=60;
+  int SliderAge=20;
+ /* Color maleColor = deActiveColor;
+  Color feMaleColor = deActiveColor;
+  void updateColor(Gender gendertype){
+    if(gendertype == Gender.male){
+      maleColor = activeColor;
+      feMaleColor = deActiveColor;
+    }
+    if(gendertype == Gender.female){
+      feMaleColor = activeColor;
+      maleColor = deActiveColor;
+    }
+  }*/
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(child: Row(
+            children: <Widget>[
+              Expanded(
 
 
-//   Color malecolor = deactivecolor;
-//   Color femalecolor = deactivecolor;
-//
-//
-// void updateColor(Gender gendertype) {
-//     if (gendertype == Gender.male) {
-//       Color malecolor = activecolor;
-//       Color femalecolor = deactivecolor;
-//     }
-//     if (gendertype == Gender.female) {
-//       Color malecolor = deactivecolor;
-//       Color femalecolor = activecolor;
-//     }
-//   }
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
-        ),
-        body: Column(
-          crossAxisAlignment:CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(child: Row(
-              children: <Widget>[
-                Expanded(
-                  // child: GestureDetector(
-                  //   onTap: (){
-                  //     setState(() {
-                  //       selectGender=Gender.male;
-                  //      // updateColor(Gender.male);
-                  //     });
-                  //   },
-                    child: RepeatContainerCodemi(
-                      onPressed:(){
-
+                    child: RepeatContainerCode(
+                      onPressed: (){
                         setState(() {
                           selectGender=Gender.male;
                         });
                       },
-                      //alt+enter
-                      colors: selectGender==Gender.male?activecolor:deactivecolor,
-                      CardWidget: RepeatTextandIconWidget(
-                        iconData: FontAwesomeIcons.male,
-                        label: 'Male',
-                      ),
-                    ),
-                 // ),gesture dectoclose
-
+                colors: selectGender==Gender.male?activeColor:deActiveColor,
+                cardwidget: RepeatTextandIconWidget(
+                    iconData: FontAwesomeIcons.male,
+                    label: 'MALE',
                 ),
-                Expanded(
-                  // child: GestureDetector(
-                  // onTap: (){
-                  //   setState(() {
-                  //     selectGender=Gender.female;
-                  //     //updateColor(Gender.female);
-                  //   });
-                  // },
-                  child: RepeatContainerCodemi(
-                    onPressed:(){
-                      setState(() {
-                        selectGender=Gender.female;
-                      });
-                    },
-                    colors: selectGender==Gender.female?activecolor:deactivecolor,
-                    CardWidget: RepeatTextandIconWidget(
-                      iconData: FontAwesomeIcons.female,
-                      label: 'Female',
-
-                    ),
-
-                  ),
-               // ),gesture dector closed
-                ),
-
-
-              ],
-            ),),
-            Expanded(child: RepeatContainerCodemi(
-              colors: Color(0xFF0A0E21),
-            CardWidget:Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('HIGHT',style:klabelstyle,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(SliderHeight.toString(),
-                  style:k2label),
-                  Text('cm',style:klabelstyle),
-
-
-
-
-                ],
               ),
-                Slider(
-                  value:SliderHeight.toDouble(),
-                  min: 120.0,
-                  max: 180.0,
-                  activeColor: Color(0xFFEB1555),
-                  inactiveColor:Color(0xFE8D8E98),
-                  onChanged:(double newvalue){
+                  ),
+              Expanded(
+                child: RepeatContainerCode(
+                  onPressed: (){
                     setState(() {
-                      SliderHeight=newvalue.round();
-
+                      selectGender=Gender.female;
                     });
                   },
-
-
+                  colors: selectGender==Gender.female?activeColor:deActiveColor,
+                  cardwidget: RepeatTextandIconWidget(
+                    iconData: FontAwesomeIcons.female,
+                     label: 'FEMALE',
+                  ),
                 ),
-
-
-              ],
-            ),
-            ),
-            ),
-            Expanded(child: Row(
+              ),
+            ],
+          )),
+          Expanded(child:new RepeatContainerCode(
+            colors: Color(0xFF1D1E33),
+            cardwidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(
-                  child: RepeatContainerCodemi(
-                    colors: Color(0xFF0A0E21),
-                  CardWidget:Column(
-                    mainAxisAlignment:MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Weight',style:klabelstyle,),
-                      Text(sliderWeigt.toString(),
-                        style:k2label,
-                      ),
-                      Row(
-                        children: [
-                        Roundbutton(
-                          icondata:FontAwesomeIcons.minus ,
-                          onPress:(){
-                           setState(() {
-                             sliderWeigt--;
-                           });
-                        },
+                Text('Height',
+                style: LabelStyle,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(Sliderheight.toString(),
+                  style: knumberstyle),
+                  Text('cm',
+                    style: LabelStyle,),
 
-                        ),
-                        SizedBox(width: 10.0,),
-                        Roundbutton(
-                          icondata:FontAwesomeIcons.plus ,
-                          onPress:(){
-                            setState(() {
-                              sliderWeigt++;
-                            });
-                          },
-                        ),
-                        ],
-                      ),
-                    ],
 
-                  )
-
-                    ,)
-                  ,),
-                Expanded(
-                  child: RepeatContainerCodemi(colors: Color(0xFF0A0E21),
-                      CardWidget:Column(
-                        mainAxisAlignment:MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('AGE',style:klabelstyle,),
-                          Text(sliderage.toString(),
-                            style:k2label,
-                          ),
-                          Row(
-                            children: [
-                              Roundbutton(
-                                icondata:FontAwesomeIcons.minus ,
-                                onPress:(){
-                                  setState(() {
-                                    sliderage--;
-                                  });
-                                },
-
-                              ),
-                              SizedBox(width: 10.0,),
-                              Roundbutton(
-                                icondata:FontAwesomeIcons.plus ,
-                                onPress:(){
-                                  setState(() {
-                                    sliderage++;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-
-                      )
-//x
-                  ),
-
-                ),
-                GestureDetector(
-                  onTap: (){
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>Resultscreen()));
+              ]
+              ),
+                Slider(value: Sliderheight.toDouble(),
+                  min: 120.0,
+                  max: 220.0,
+                  activeColor: Color(0xFFEB1555),
+                  inactiveColor: Color(0xFF8D8E98),
+                  onChanged: (double newValue){
+                    Sliderheight=newValue.round();
                   },
-                  child: Container(
-                    child:Center(
-                        child: Text('Calculate',style: k2largelabel,)),
-                    color: Color(0xFA0AFE21),
-                    margin:EdgeInsets.only(top:10.0),
-                    width:double.infinity,
-                    height: 80.0,
-
-
-
-                  ),
                 ),
-
 
               ],
-            ),),
+            ),
+          )),
+          Expanded(child: Row(
+            children:<Widget> [
+              Expanded(child:new RepeatContainerCode(
+                colors: Color(0xFF1D1E33),
+                cardwidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('WEIGHT',
+                    style: LabelStyle,),
+                    Text(
+                      SliderWeight.toString(),
+                      style: knumberstyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RoundIcon(
+                            iconData: FontAwesomeIcons.minus,
+                            onPress: (){
+                              setState(() {
+                                SliderWeight--;
+                              });
+                            }),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIcon(
+                            iconData: FontAwesomeIcons.plus,
+                            onPress: (){
+                              setState(() {
+                                SliderWeight++;
+                              });
+                            }),
+                      ],
+                    ),
+                  ],
+                ),
+              )),
+              Expanded(child:new RepeatContainerCode(
+                colors: Color(0xFF1D1E33),
+                cardwidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('AGE',
+                      style: LabelStyle,),
+                    Text(
+                      SliderAge.toString(),
+                      style: knumberstyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RoundIcon(
+                            iconData: FontAwesomeIcons.minus,
+                            onPress: (){
+                              setState(() {
+                                SliderAge--;
+                              });
+                            }),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIcon(
+                            iconData: FontAwesomeIcons.plus,
+                            onPress: (){
+                              setState(() {
+                                SliderAge++;
+                              });
+                            }),
+                      ],
+                    ),
+                  ],
+                ),
+              ))
+            ],
+          ),),
+          GestureDetector(
+            onTap: (){
+              CalculatorBrain calc=CalculatorBrain(height: Sliderheight, weight: SliderWeight);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen(
+                bmiResult: calc.calculateBMI(),
+                resultText: calc.getResult(),
+                interpretation: calc.getInterpretation(),
 
-          ],
-        ),
-      );
-      floatingActionButton:
-      FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-//enamuration constants ko text form main display karwany main help karti ha
-      );
-    }
+              )));
+            },
+            child: Container(
+            child:Center(
+              child: Text(
+                'calculated',
+                style: klargebuttonstyle,
+              ),
+              ),
+              color: Color(0xFFEB1555),
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: 50.0,
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
 
-  class Roundbutton extends StatelessWidget {
-  Roundbutton({@required this.icondata,@required this.onPress}),
-  final Icondata icondata;
+
+class RoundIcon extends StatelessWidget{
+  RoundIcon({@required this.iconData, @required this.onPress});
+  final IconData iconData;
   final Function onPress;
-
-
-
-    @override
-    Widget build(BuildContext context) {
-      return RawMaterialButton(
-        child: Icon(icondata),
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        child: Icon(iconData),
         onPressed: onPress,
-        elevation: 6.0,
-        constraints: BoxConstraints.tightFor(
-          height: 56.0,
-          width: 56.0,
-        ),
-        shape: CircleBorder(),
-        fillColor:Color (0xFF4C4F5E),
-
-
-
-      );
-    }
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        height: 56.0,
+        width: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
